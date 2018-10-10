@@ -1,0 +1,71 @@
+---
+title: "grafico_ju"
+author: "julliana"
+date: "9 de outubro de 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r message=FALSE, warning=FALSE}
+library(readxl)
+library(tidyverse)
+```
+
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com> ou [link](http://rmarkdown.rstudio.com).
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars, eval=FALSE}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+```{r relatorio , echo=FALSE, eval=TRUE}
+tempos <- c(338,305,327,337,267)
+ex <- c(138,105,127,137,67)
+media <- mean(tempos)
+mediana <- median(tempos)
+minimo <- min(tempos)
+maximo <- max(tempos)
+```
+
+O tempo médio de reação é: `r round(media,0)` enquanto o tempo mediano de reação é: `r round(mediana,0)`. O menor tempo de reação foi de:  `r round(minimo,0)`  o maior foi de: `r round(maximo,0)`
+
+```{r exemplo}
+amostra = rnorm(20)
+plot(amostra)
+```
+```{r}
+barplot(tempos)
+```
+
+
+```{r}
+library(ggplot2)
+library(ggrepel)
+ggplot(mtcars,aes(x=mpg, y= hp))+
+  geom_point(aes(color=gear, alpha=vs))+
+  geom_text_repel(aes(label=rownames(mtcars)), size=3)+
+  theme_bw()
+                  
+ggplot(mtcars,aes(y=mpg, x= rownames(mtcars), fill = cyl))+
+  geom_bar(stat = "identity") +
+  coord_flip() +
+  theme_minimal() +
+  theme(text = element_text(family = "Georgia"))
+```
+
+
